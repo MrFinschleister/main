@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-control" content="no-cache">
+
+    <title>3D Rendering</title>
+    <style>
+        body {
+            margin: 0;
+            padding: none;
+            overflow-y: hidden;
+        }
+
+        #githubLink {
+            position: absolute;
+            left: 1vh;
+            top: 1vh;
+            color: white;
+            text-decoration-color: white;
+        }
+
+        #inputDiv {
+            position: absolute;
+            left: 1vh;
+            top: 6vh;
+        }
+
+        #inputDiv label, input {
+            display: block;
+            color: white;
+        }
+    </style>
+
+    <script src="../../util/classPackage.js"></script>
+    <script src="../../util/utilFunctions.js"></script>
+    <script src="./classes.js"></script>
+    <script src="./animatorClasses.js"></script>
+    <script src="./settings.js"></script>
+    <script src="./index.js"></script>
+    <script src="./rasterization.js"></script>
+</head>
+<body onload="onload()">
+    <a id="githubLink" href="https://github.com/MrFinschleister/newerRendering/">Github</a>
+
+    <div id="inputDiv">
+        <label>Resolution</label>
+        <input type="range" value="1" min="0.1" max="1" step="0.1" id="resolutionSlider" oninput="changeResolution(this.value)">
+        <br>
+    </div>
+    
+    <canvas id="canvas" style="width: 100vw; height: 100vh; background-color: rgb(60, 60, 60);"></canvas>
+</body>
+</html>

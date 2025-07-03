@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: none;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(60, 60, 60);
+            color: lightgrey;
+        }
+
+        button, input {
+            color: lightgrey;
+            border-radius: 1vh;
+            background-color: rgb(90, 90, 90);
+        }
+
+        #inputsDiv {
+            position: absolute;
+            
+            width: 20vw;
+            height: 20vh;
+            left: 30vw;
+            top: 5vh;
+        }
+
+        #inputsDiv input, #inputsDiv label {
+            width: 15vw;
+        }
+
+        #buttonsDiv {
+            position: absolute;
+
+            width: 20vw;
+            height: 10vh;
+            left: 50vw;
+            top: 5vh;
+        }
+        
+        #buttonsDiv button {
+            border: none;
+            width: 15vw;
+            padding: 1.5vh;
+            margin: 1vh;
+        }
+
+        #accuracyTableDiv {
+            position: absolute;
+            width: 100vw;
+            height: 15vh;
+            left: 0vw;
+            top: 35vh;
+        }
+
+        #dataTableDiv {
+            position: absolute;
+            width: 100vw;
+            left: 0vw;
+            top: 55vh;
+        }
+
+        #accuracyTableDiv, #dataTableDiv, #inputsDiv, #buttonsDiv {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+
+        #accuracyTable, #dataTable {
+            border-spacing: 0;
+        }
+
+        #accuracyTable td, #dataTable td {
+            width: 5vw;
+            height: 3vh;
+            padding: 1vh;
+
+            font-size: 1.5vh;
+
+            text-align: center;
+
+            border: 1px grey solid;
+            color: black;
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body onload="onload()">
+    <div id="inputsDiv">
+        <label>Data Input (extracts testing data)</label>
+        <input type="file" accept=".txt, .csv" oninput="loadData(this.files[0])">
+        <label>Input New Testing Data</label>
+        <input type="file" accept=".txt, .csv" oninput="loadTestingData(this.files[0])">
+        <label id="numPartitionsLabel">Number of Forest Partitions: 1</label>
+        <input id="numPartitionsInput"type="range" min="1" max="50" value="1" oninput="setNumPartitions(this.value)">
+    </div>
+
+    <div id="buttonsDiv">
+        <button onclick="trainAndStart()">Train and Test</button>
+        <button onclick="train()">Train</button>
+        <button onclick="test()">Test</button>
+    </div>
+
+    <div id="manualTestDiv">
+    </div>
+    
+    <div id="accuracyTableDiv">
+        <p>Accuracy</p>
+        <table id="accuracyTable"></table>
+    </div>
+    <br>
+    <div id="dataTableDiv">
+        <p>Data</p>
+        <table id="dataTable"></table>
+    </div>
+    
+    <script src="../../../util/classPackage.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
